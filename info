@@ -12,3 +12,8 @@ Pass: Fran4xxxxx
 
 Crear un package.json utilizando las lineas de comando de la terminal
 Asi se sabes las dependencias 
+
+//
+crear archivo js
+ahi crear api_key y variable global en archivo secret.js
+cont API_KEY="x"

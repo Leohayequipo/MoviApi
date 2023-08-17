@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Leohayequipo/MoviApi/issues"
   },
-  "homepage": "https://github.com/Leohayequipo/MoviApi#readme"
+  "homepage": "https://github.com/Leohayequipo/MoviApi#readme",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
 }
