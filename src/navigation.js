@@ -1,12 +1,20 @@
 searchFormBtn.addEventListener('click',() =>{
-    location.hash="#search='";
+
+    location.hash="#search="+searchFormInput.value;
 });
 
 trendingBtn.addEventListener('click',() =>{
     location.hash="#trends'";
 });
 arrowBtn.addEventListener('click',() =>{
-    location.hash="#home'";
+  //history.back();
+  if(document.domain != "localhost"){
+    location.hash="#home";
+  }else{
+    history.back();
+  }
+
+    
 });
 
 
@@ -66,9 +74,10 @@ function homePage() {
     
     const [_,categoryDate] = location.hash.split('=');
     const [categoryId,categoryName]=categoryDate.split('-');
+    //console.log(location.hash);
     headerCategoryTitle.innerHTML=categoryName;
     window.scrollTo(0, 0);
-    getMoviesByCategory(categoryId,categoryName);
+    getMoviesByCategory(location.hash);
   
   }
   
@@ -85,6 +94,9 @@ function homePage() {
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.add('inactive');
     movieDetailSection.classList.remove('inactive');
+    const [_,movieId] = location.hash.split('=');
+    
+    getMovieById(movieId);
   }
   
   function searchPage() {
@@ -95,14 +107,15 @@ function homePage() {
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
-    headerCategoryTitle.classList.remove('inactive');
+    headerCategoryTitle.classList.add('inactive');
     searchForm.classList.remove('inactive');
   
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
-  
+    const [_,searchValue] = location.hash.split('=');
+    getMoviesBySearch(searchValue);
   }
   
   function trendsPage() {
@@ -120,5 +133,7 @@ function homePage() {
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
+    headerCategoryTitle.innerHTML='tendencias';
+    getTrendingMovies();
     
   }
